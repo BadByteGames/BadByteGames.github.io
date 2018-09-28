@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		tr{
+			outline-color:black;
+			outline-width:2px;
+			outline-style:solid;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Easy Xml Writer for DragonHunt Engine</h1>
+		<p>Instructions: Fill out the areas of the form you want to edit and then click "Export"</p>
+		<p id="startLocation">Start location: </p>
+		<button>Import</button> <button onclick="submitAdventure()"> Export</button> <br/>
+		<input id="avalue" name="adventurename" placeholder="Adventure Name" type="text"><br/>
+		<h3>Locations</h3>
+		<table id="locations">
+		</table>
+		<button onclick="createLocation()">+</button><br/>
+
+		<p id="demo"></p>
+		<script>
+			var startLocation = '';
+			var startLocationID = '';
+			var locationCount = 0;
+			function createLocation(){
+				if(locationCount == 0){
+					//automatically set start location
+					startLocationID = "location"+locationCount;
+				}
+				var br = document.createElement("br");
+				
+				var location = document.createElement("td");
+				var nameInput = document.createElement("input");
+				nameInput.setAttribute("onchange","locationNameChanged(\"location"+locationCount+"\")");
+				nameInput.type="text";
+				nameInput.placeholder = "Location Name";
+				nameInput.className="lname";
+				location.appendChild(nameInput);
+				location.appendChild(br);
+				
+				var brOne = document.createElement("br");
+				var descriptionInput = document.createElement("TextArea");
+				descriptionInput.name="Location Description";
+				descriptionInput.rows="3";
+				descriptionInput.columns="40";
+				descriptionInput.placeholder = "Location Description";
+				descriptionInput.className="ldesc";
+				location.appendChild(descriptionInput);
+				location.appendChild(brOne);
+				
+				var brTwo = document.createElement("br");
+				var removeButton = document.createElement("button");
+				var removeText = document.createTextNode("Remove");
+				removeButton.className="removeButton";
+				removeButton.setAttribute("onclick","removeLocation(\"location"+locationCount+"\")");
+				removeButton.appendChild(removeText);
+				location.appendChild(removeButton);
+				location.appendChild(brTwo);
+				
+				var setStartLocationButton = document.createElement("button");
+				var setStartLocationText = document.createTextNode("Set Start");
+				setStartLocationButton.className = "lsetstart";
+				setStartLocationButton.setAttribute("onclick","setStartLocation(\"location"+locationCount+"\")");
+				setStartLocationButton.appendChild(setStartLocationText);
+				
+				location.appendChild(setStartLocationButton);
+				
+				var locationRow = document.createElement("tr");
+				locationRow.appendChild(location);
+				locationRow.className = "location"+locationCount;
+				
+				var locations = document.getElementById("locations");
+				locations.appendChild(locationRow);
+				
+				locationCount++;
+			}
+
+			function removeLocation(id){
+				startLocationID = id;
+				var locations = document.getElementById("locations");
+				var child = locations.getElementsByClassName(id)[0];
+				child.parentNode.removeChild(child);
+			}
+
+			function locationNameChanged(id){
+				if(id == startLocationID){
+					var locations = document.getElementById("locations");
+					var location = locations.getElementsByClassName(id)[0].getElementsByTagName("td")[0];
+					startLocation = location.getElementsByClassName("lname")[0].value;
+					document.getElementById("startLocation").innerHTML = "Start location: "+startLocation;
+				}
+			}
+			
+			function setStartLocation(id){
+				var locations = document.getElementById("locations");
+				var location = locations.getElementsByClassName(id)[0].getElementsByTagName("td")[0];
+				startLocation = location.getElementsByClassName("lname")[0].value;
+				startLocationID = id;
+				console.log(startLocationID);
+				document.getElementById("startLocation").innerHTML = "Start location: "+startLocation;
+			}
+			
+			function submitAdventure(){
+			   var xmlString = '<?xml version="1.0" ?><adventure />';
+			   var parser = new DOMParser();
+			   var outputXML = parser.parseFromString(xmlString,"application/xml");
+			   
+			   var name = document.getElementById("avalue").value;
+			   var adventure = outputXML.getElementsByTagName("adventure")[0];
+			   
+			   adventure.setAttribute("name",name);
+			   adventure.setAttribute("version","1.0");
+			   adventure.setAttribute("start",startLocation);
+			   
+			   //loop through locations
+			   var locationHTML = document.getElementById("locations").firstElementChild;
+			   while(locationHTML){
+					var location = outputXML.createElement("location");
+					location.setAttribute("name", locationHTML.getElementsByClassName("lname")[0].value);
+					
+					var description = outputXML.createElement("description");
+					var descriptionText = outputXML.createTextNode("");
+					descriptionText.data = locationHTML.getElementsByClassName("ldesc")[0].value;
+					
+					description.appendChild(descriptionText);
+					
+					location.appendChild(description);
+					
+					adventure.appendChild(location);
+					locationHTML = locationHTML.nextElementSibling;
+			   }
+			   
+			   var xmlText = new XMLSerializer().serializeToString(outputXML);
+			   document.getElementById("demo").textContent = xmlText;
+			   return false;
+			}
+		</script>
+	</body>
+</html>
