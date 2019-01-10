@@ -1,11 +1,40 @@
-<!doctype HTML>
-
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Bad Byte Games Site</title>
+    <title>Bad Byte Games | Home </title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="GameLogo.png">
   </head>
   <body>
-    <a href="https://badbytegames.github.io/dragonhuntdoc.html">DragonHunt Documentation</a>
-    <a href="https://badbytegames.github.io/adventuregenerator.html">DragonHunt Adventure Generator</a>
+    <!--Navigation bar at the top of the page-->
+    <div id="navbar">
+      <a href="index.html">
+        <img id="logo" src="GameLogo.png" alt="Bad Byte Games Logo"/>
+      </a>
+      <div id="navlinks">
+        <ul id="navlist">
+          <li><a class="navlink" id="current" href="index.html">Home</a></li>
+          <li><a class="navlink" href="aboutme.html">About Me</a></li>
+          <li><a class="navlink" href="projects.html">Projects</a></li>
+          <li><a class="navlink" href="glasswall.html">Glass Wall</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--Stores main content of page-->
+    <div id="content">
+      <!--Title and description-->
+      <div id="titlebanner">
+        <h1 id="infotitle">Welcome to</h1>
+        <img id="titlelogo" src="GameLogo.png"/>
+      </div>
+      <p id="maindescription">&#8195;Byte Games is an awesome game company that makes fun games and tech demos. Check us out on <a href="https://github.com/BadByteGames">github</a> to see up-to-date code for projects and games. On this site you will find summaries of projects as well as contribution info and statuses regarding them. You can also check out the <a href="aboutme.html">About Me</a> section to view info about me (Duh) as developer.The projects list is shown under Projects. <a href="glasswall.html">The Glass Wall Game Engine</a> has its own seperate tab for info on it.<br/>
+        &#8195;Currently, I am working on <a href="glasswall.html">The Glass Wall Game Engine</a> (Glass Wall). Glass Wall is designed in C++ and is meant to focus on performance over graphics. This is to allow for complex simulation type games where you can have hundreds of moving parts. A level editor for it will be coming soon.
+      </p>
+    </div>
+    <!--Copyright notice-->
+    <div id="footer">
+      <p>Copyright &copy; Robert White 2018</p>
+    </div>
   </body>
 </html>

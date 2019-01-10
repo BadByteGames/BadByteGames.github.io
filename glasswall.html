@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Byte Games | Glass Wall Game Engine </title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="GameLogo.png">
+  </head>
+  <body>
+    <!--Navigation bar at the top of the page-->
+    <div id="navbar">
+      <a href="index.html">
+        <img id="logo" src="GameLogo.png"/>
+      </a>
+      <div id="navlinks">
+        <ul id="navlist">
+          <li><a class="navlink" href="index.html">Home</a></li>
+          <li><a class="navlink" href="aboutme.html">About Me</a></li>
+          <li><a class="navlink" href="projects.html">Projects</a></li>
+          <li><a class="navlink" id="current" href="glasswall.html">Glass Wall</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--Stores main content of page-->
+    <div id="content">
+      <h1 id="glasswalltitle">The Glass Wall Game Engine</h1>
+      <p id="aboutglasswall">&#8195;The Glass Wall Game Engine (Glass Wall) started as a small OpenGL wrapper and began taking shape as a performance based game-engine. Glass Wall is mostly in development so a lot of features are mostly concepts that are kept in mind when forming the structure. The github repository is <a href="https://github.com/BadByteGames/GlassWall">here</a>. The engine is a STATIC C++ library that uses CMake in order to generate project files for several build systems. Windows users should use vcpkg to get dependencies when building.<br/>
+      &#8195;Since the engine is currently in development, there is no documentation for it as a lot of concepts can change on the spot. Currently, the engine is all in a class "World" that is the central interaction point for entities, the render engine, and input management. Each entity has a root component with sub components being models, cameras, and any other things that an entity could use. As of now, the features list shown below are concepts that are planned for the future course of the game engine and are central concepts to it.</p>
+      <ul id="features">
+        <li>User Programmable Shaders</li>
+        <li>Simplistic Entity System</li>
+        <li>Physics Focused</li>
+        <li>C++ API</li>
+      </ul>
+      <img class="softwarelogo" src="SDL_Logo.png" alt="sdl logo"/>
+      <img class="softwarelogo" src="GLM_logo.png" alt="glm logo"/>
+      <img class="softwarelogo" src="opengl.svg" alt="opengl logo"/>
+    </div>
+    <!--Copyright notice-->
+    <div id="footer">
+      <p>Copyright &copy; Robert White 2018 OpenGL&reg; and the oval logo are trademarks or registered trademarks of Hewlett Packard Enterprise in the United States and/or other countries worldwide.</p>
+    </div>
+  </body>
+</html>

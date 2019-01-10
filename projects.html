@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bad Byte Games | Projects </title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="GameLogo.png">
+  </head>
+  <body>
+    <!--Navigation bar at the top of the page-->
+    <div id="navbar">
+      <a href="index.html">
+        <img id="logo" src="GameLogo.png"/>
+      </a>
+      <div id="navlinks">
+        <ul id="navlist">
+          <li><a class="navlink" href="index.html">Home</a></li>
+          <li><a class="navlink" href="aboutme.html">About Me</a></li>
+          <li><a class="navlink" id="current" href="projects.html">Projects</a></li>
+          <li><a class="navlink" href="glasswall.html">Glass Wall</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--Stores main content of page-->
+    <div id="content">
+      <!-- div for each project-->
+      <div class="project">
+        <a href="glasswall.html">
+          <div class="titlebanner">
+            <img class="projectbackground" src="glasswall.png" alt="Suzanne rendered in glass wall"/>
+            <h1 class="projecttitle">Glass Wall</h1>
+          </div>
+        </a>
+        <p class="info">The Glass Wall Game engine is the currently active project as there is only one dev team (me). The engine is designed to favor performance over how things look. The official repo is the technical up to date branch although most active development is done on my own fork <a href="https://github.com/armedturret/GlassWall">here</a>. Note: My fork is not guarenteed to be working in any way and should only be used to monitor my progress in development. The active goal right now is to make a 1.0 release.</p>
+      </div>
+      <div class="project">
+        <a href="https://github.com/BadByteGames/DragonHunt">
+          <div class="titlebanner">
+            <img class="projectbackground" src="command.gif" alt="A command prompt"/>
+            <h1 class="projecttitle">Dragonhunt</h1>
+          </div>
+        </a>
+        <p class="info">The Dragonhunt Text Adventure Engine is an xml based text adventure engine. Currently, development is limited to bug patches until a dev team is found to work on it although you are free to add your own features and merge with the main repository. There is no official documentation available for it, and I have no good way of writing it, but if people ask for some docs, I will make it. There also used to be support for a web api but that broke and could be implemented by somebody. The project was made prior to when I knew how to write CMake code for projects.</p>
+      </div>
+    </div>
+    <!--Copyright notice-->
+    <div id="footer">
+      <p>Copyright &copy; Robert White 2018</p>
+    </div>
+  </body>
+</html>
